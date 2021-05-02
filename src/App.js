@@ -12,7 +12,7 @@ function App() {
     let [page, setPage] = useState('2');
     let [source, setSource] = useState('');
     const [isTopNews, setIsTopNews] = useState(true);
-    const [isFetching, setIsFetching] = useState(false);
+    const [isFetching, setIsFetching] = useState(true);
 
     function retrieveNews() {
         let newsUrl = `https://newsapi.org/v2/everything?q=${title}&apiKey=${APIKey}&pageSize=5&page=1&sources=${source}`;
