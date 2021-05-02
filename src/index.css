@@ -25,13 +25,18 @@ code {
 }
 
 
-.rrr{
+.card{
   background: #fff;
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0,0,0,0.5);
   width: 600px;
   padding: 1rem 0.5rem 0.5rem;
   margin-left: 40%;
+  text-align: center;
+}
+
+.no-articles ,.loader-spinner{
+  margin-left: 15%;
   text-align: center;
 }
 
@@ -48,7 +53,6 @@ code {
   box-shadow: 0 0 10px rgba(0,0,0,0.5);
   margin-left: 1rem;
   position: fixed;
-
 }
 
 .sources, .search-btn ,.load-more-btn{
@@ -68,10 +72,9 @@ code {
 
 .btn ,.sources{
   height: 40px;
-
 }
 .btn{
-  background-color: #4CAF50; /* Green */
+  background-color: #4CAF50;
   border: none;
   color: white;
   text-align: center;
@@ -84,6 +87,9 @@ code {
 .btn:hover{
   background-color: #368039;
   transition: 0.3s;
+}
+.btn:disabled{
+  background-color: #aaadab;
 }
 
 

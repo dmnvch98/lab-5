@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {APIKey} from "../App";
 
-export default function Filter({retrieveNews, setTitle, setSource, loadMore}) {
+export default function Filter({retrieveNews, setTitle, setSource, loadMore, title, setIsTopNews}) {
 
     let [sources, setSources] = useState([]);
 
@@ -11,23 +11,30 @@ export default function Filter({retrieveNews, setTitle, setSource, loadMore}) {
         fetch(sourcesURL).then((res) => {
             return res.json();
         }).then((data) => {
-            setSources(data.sources);
-            console.log(data);
+            setSources(data.sources)
+           // setIsTopNews(false);
         });
+    }
+
+    const handleKeyDown = (event) => {
+        if (event.key === 'Enter' && title.trim()) {
+                retrieveNews();
+        }
     }
 
     useEffect(() => {
         retrieveSources()
     },[]
         );
+
     return (
         <div className="search-form">
             <div className="label-input label">
-                <label htmlFor="input">Keyword</label>
+                <label htmlFor="input">Keyword*</label>
             </div>
 
             <div className="input">
-                <input type="text" className="input" onChange={event => setTitle(event.target.value)}/>
+                <input type="text" className="input" onKeyDown={handleKeyDown} onChange={event => setTitle(event.target.value)}/>
             </div>
 
             <div className="label-sources">
@@ -44,7 +51,7 @@ export default function Filter({retrieveNews, setTitle, setSource, loadMore}) {
             </div>
 
             <div className="search">
-                <button className="search-btn btn" onClick={retrieveNews}>
+                <button className="search-btn btn" onClick={retrieveNews} disabled={!title || !title.trim()}>
                     Search
                 </button>
             </div>
