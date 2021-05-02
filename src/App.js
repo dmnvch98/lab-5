@@ -68,8 +68,8 @@ function App() {
         <Filter setTitle={setTitle} title={title} retrieveNews={retrieveNews} loadMore={loadMore} setSource={setSource}
                 setIsTopNews={setIsTopNews}/>
         <div>
-            {news.length ? news.map(card => (
-                <Card card={card}/>
+            {news.length ? news.map((card, i) => (
+                <Card card={card} key={i}/>
             )) : (isFetching ? <LoaderSpinner/> : <NoArticles/>)}
         </div>
     </div>

@@ -19,7 +19,7 @@ export default function Card({card}) {
                     </p>
                 </div>
                 <div className="rmb">
-                    <a href={card.url} target="_blank">
+                    <a href={card.url} target="_blank" rel="noreferrer">
                         <button className="read-more-btn btn">Read more</button>
                     </a>
                 </div>

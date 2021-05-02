@@ -43,8 +43,8 @@ export default function Filter({retrieveNews, setTitle, setSource, loadMore, tit
             <div className="menu">
                 <select name="sources" className="sources" onChange={event => setSource(event.target.value)}>
                     <option value="" className="all-option">All</option>
-                    {sources.map((item) => (
-                        <option value={item.id}> {item.name} </option>
+                    {sources.map((item, i) => (
+                        <option value={item.id} key={i}> {item.name} </option>
                     ))}
                 </select>
             </div>
