@@ -5,27 +5,25 @@ export default function Filter({retrieveNews, setTitle, setSource, loadMore, tit
 
     let [sources, setSources] = useState([]);
 
-    function retrieveSources(){
+    function retrieveSources() {
         let sourcesURL = `https://newsapi.org/v2/sources?apiKey=${APIKey}&language=en`;
 
         fetch(sourcesURL).then((res) => {
             return res.json();
         }).then((data) => {
             setSources(data.sources)
-           // setIsTopNews(false);
         });
     }
 
     const handleKeyDown = (event) => {
         if (event.key === 'Enter' && title.trim()) {
-                retrieveNews();
+            retrieveNews();
         }
     }
 
     useEffect(() => {
         retrieveSources()
-    },[]
-        );
+    }, []);
 
     return (
         <div className="search-form">
@@ -34,7 +32,8 @@ export default function Filter({retrieveNews, setTitle, setSource, loadMore, tit
             </div>
 
             <div className="input">
-                <input type="text" className="input" onKeyDown={handleKeyDown} onChange={event => setTitle(event.target.value)}/>
+                <input type="text" className="input" onKeyDown={handleKeyDown}
+                       onChange={event => setTitle(event.target.value)}/>
             </div>
 
             <div className="label-sources">
@@ -45,7 +44,7 @@ export default function Filter({retrieveNews, setTitle, setSource, loadMore, tit
                 <select name="sources" className="sources" onChange={event => setSource(event.target.value)}>
                     <option value="" className="all-option">All</option>
                     {sources.map((item) => (
-                        <option value={item.id} > {item.name} </option>
+                        <option value={item.id}> {item.name} </option>
                     ))}
                 </select>
             </div>
@@ -61,6 +60,5 @@ export default function Filter({retrieveNews, setTitle, setSource, loadMore, tit
             </div>
 
         </div>
-
     )
 }
